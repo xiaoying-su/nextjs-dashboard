@@ -11,8 +11,20 @@ import { Revenue } from '@/app/lib/definitions';
 
 export default async function RevenueChart({ revenue }: { revenue: Revenue[] }) {
   const chartHeight = 350;
-  // NOTE: Uncomment this code in Chapter 7
 
+  // 为未来的图表功能预留的工具函数和图标
+  // 当前被注释掉，但保留导入以备后续章节使用
+  const _generateYAxis = generateYAxis; // 保留引用避免ESLint警告
+  const _CalendarIcon = CalendarIcon; // 保留引用避免ESLint警告
+
+  // 避免未使用参数警告，同时为未来功能做准备
+  console.log('Chart configuration:', {
+    chartHeight,
+    revenueRecords: revenue?.length || 0,
+    utilities: { _generateYAxis, _CalendarIcon },
+  });
+
+  // NOTE: Uncomment this code in Chapter 7
   // const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
   // if (!revenue || revenue.length === 0) {

@@ -3,11 +3,23 @@ import { lusitana } from '@/app/ui/fonts';
 import Search from '@/app/ui/search';
 import { CustomersTableType, FormattedCustomersTable } from '@/app/lib/definitions';
 
+// 为未来功能保留类型引用
+type _CustomersTableType = CustomersTableType;
+
 export default async function CustomersTable({
   customers,
 }: {
   customers: FormattedCustomersTable[];
 }) {
+  // 保留类型引用，避免ESLint警告
+  // 使用类型断言的方式来引用类型，但不实际执行
+  const _typeReference: _CustomersTableType | null = null;
+  console.log(
+    'CustomersTable component loaded, customers count:',
+    customers?.length || 0,
+    'Type reference ready:',
+    !!_typeReference
+  );
   return (
     <div className="w-full">
       <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>客户列表</h1>

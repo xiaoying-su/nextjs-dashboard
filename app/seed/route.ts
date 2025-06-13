@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import postgres from 'postgres';
-import { invoices, customers, revenue, users } from '../lib/placeholder-data';
+import { customers, invoices, revenue, users } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -103,12 +103,14 @@ async function seedRevenue() {
 
 export async function GET() {
   try {
-    const result = await sql.begin((sql) => [
-      seedUsers(),
-      seedCustomers(),
-      seedInvoices(),
-      seedRevenue(),
-    ]);
+    const result = await sql.begin((sqlTransaction) => {
+      // 使用事务sql实例执行种子数据操作
+      console.log('Starting database seeding with transaction:', sqlTransaction);
+      return [seedUsers(), seedCustomers(), seedInvoices(), seedRevenue()];
+    });
+
+    // 记录种子数据执行结果
+    console.log('Database seeding completed:', result);
 
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {

@@ -14,17 +14,31 @@ export function CreateInvoice() {
 
 export function UpdateInvoice({ id }: { id: string }) {
   return (
-    <Link href="/dashboard/invoices" className="rounded-md border p-2 hover:bg-gray-100">
+    <Link
+      href={`/dashboard/invoices/${id}/edit`}
+      className="rounded-md border p-2 hover:bg-gray-100"
+      title={`Edit invoice ${id}`}
+    >
       <PencilIcon className="w-5" />
     </Link>
   );
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
+  const handleDelete = () => {
+    // TODO: 实现删除功能
+    console.log('Delete invoice:', id);
+  };
+
   return (
     <>
-      <button type="submit" className="rounded-md border p-2 hover:bg-gray-100">
-        <span className="sr-only">Delete</span>
+      <button
+        type="button"
+        onClick={handleDelete}
+        className="rounded-md border p-2 hover:bg-gray-100"
+        title={`Delete invoice ${id}`}
+      >
+        <span className="sr-only">Delete invoice {id}</span>
         <TrashIcon className="w-5" />
       </button>
     </>

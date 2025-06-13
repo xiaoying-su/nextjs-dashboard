@@ -1,6 +1,7 @@
-import { BanknotesIcon, ClockIcon, UserGroupIcon, InboxIcon } from '@heroicons/react/24/outline';
+import { BanknotesIcon, ClockIcon, InboxIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 
+// 图标映射，用于不同类型的卡片显示对应图标
 const iconMap = {
   collected: BanknotesIcon,
   customers: UserGroupIcon,
