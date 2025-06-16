@@ -25,16 +25,15 @@ export function UpdateInvoice({ id }: { id: string }) {
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
-  const handleDelete = () => {
-    // TODO: 实现删除功能
-    console.log('Delete invoice:', id);
-  };
+  // const handleDelete = () => {
+  //   // TODO: 实现删除功能
+  //   console.log('Delete invoice:', id);
+  // };
 
   return (
     <>
       <button
         type="button"
-        onClick={handleDelete}
         className="rounded-md border p-2 hover:bg-gray-100"
         title={`Delete invoice ${id}`}
       >
